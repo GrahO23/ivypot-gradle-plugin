@@ -15,6 +15,7 @@
 package org.ysb33r.gradle.ivypot.internal
 
 import org.gradle.api.GradleException
+import org.gradle.api.artifacts.repositories.ArtifactRepository
 import org.gradle.api.artifacts.repositories.FlatDirectoryArtifactRepository
 import org.gradle.api.artifacts.repositories.IvyArtifactRepository
 import org.gradle.api.artifacts.repositories.MavenArtifactRepository
@@ -57,4 +58,8 @@ class BaseRepositoryFactory implements org.gradle.api.internal.artifacts.BaseRep
         return null
     }
 
+    @Override
+    ArtifactRepository createGradlePluginPortal() {
+        return null
+    }
 }

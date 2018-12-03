@@ -19,6 +19,7 @@ import groovy.transform.CompileStatic
 import org.gradle.api.Action
 import org.gradle.api.ActionConfiguration
 import org.gradle.api.artifacts.ComponentMetadataSupplier
+import org.gradle.api.artifacts.ComponentMetadataVersionLister
 import org.gradle.api.artifacts.repositories.IvyArtifactRepository
 import org.gradle.api.artifacts.repositories.IvyArtifactRepositoryMetaDataProvider
 import org.gradle.api.artifacts.repositories.RepositoryLayout
@@ -186,7 +187,21 @@ class IvyRepository implements IvyArtifactRepository, IvyXml, RepositoryTraits {
     void setMetadataSupplier(Class<? extends ComponentMetadataSupplier> aClass, Action<? super ActionConfiguration> action) {
     }
 
-    /** Returns a XML snippet suitable for including in the resolvers section
+    @Override
+    void setComponentVersionsLister(Class<? extends ComponentMetadataVersionLister> lister) {
+
+    }
+
+    @Override
+    void setComponentVersionsLister(Class<? extends ComponentMetadataVersionLister> lister, Action<? super ActionConfiguration> configureAction) {
+
+    }
+
+    @Override
+    void metadataSources(Action<? super MetadataSources> configureAction) {
+
+    }
+/** Returns a XML snippet suitable for including in the resolvers section
      *
      * @return
      */

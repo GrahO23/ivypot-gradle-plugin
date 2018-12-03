@@ -16,6 +16,10 @@ package org.ysb33r.gradle.ivypot.internal
 
 import groovy.transform.CompileDynamic
 import groovy.transform.CompileStatic
+import org.gradle.api.Action
+import org.gradle.api.ActionConfiguration
+import org.gradle.api.artifacts.ComponentMetadataSupplier
+import org.gradle.api.artifacts.ComponentMetadataVersionLister
 import org.gradle.api.artifacts.repositories.IvyArtifactRepository
 import org.gradle.api.artifacts.repositories.MavenArtifactRepository
 import org.gradle.api.artifacts.repositories.PasswordCredentials
@@ -80,7 +84,11 @@ class MavenRepository implements MavenArtifactRepository, IvyXml, RepositoryTrai
         artifactUrls.addAll(urls)
     }
 
-    /** Returns a XML snippet suitable for including in the resolvers section
+    @Override
+    void metadataSources(Action<? super MetadataSources> configureAction) {
+
+    }
+/** Returns a XML snippet suitable for including in the resolvers section
      *
      * @return
      */
@@ -108,4 +116,24 @@ class MavenRepository implements MavenArtifactRepository, IvyXml, RepositoryTrai
     }
 
     private List<Object> artifactUrls = []
+
+    @Override
+    void setMetadataSupplier(Class<? extends ComponentMetadataSupplier> rule) {
+
+    }
+
+    @Override
+    void setMetadataSupplier(Class<? extends ComponentMetadataSupplier> rule, Action<? super ActionConfiguration> configureAction) {
+
+    }
+
+    @Override
+    void setComponentVersionsLister(Class<? extends ComponentMetadataVersionLister> lister) {
+
+    }
+
+    @Override
+    void setComponentVersionsLister(Class<? extends ComponentMetadataVersionLister> lister, Action<? super ActionConfiguration> configureAction) {
+
+    }
 }
