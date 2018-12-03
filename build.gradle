@@ -20,10 +20,10 @@ plugins {
     id 'maven'
     id 'com.gradle.plugin-publish' version '0.9.9'
     id 'com.github.hierynomus.license' version '0.12.1'
-    id 'org.ysb33r.gradletest' version '2.0-alpha-6'
+//    id 'org.ysb33r.gradletest' version '2.0-alpha-6'
     id 'org.ysb33r.os' version '0.9'
 }
-
+apply plugin: 'maven-publish'
 apply plugin: 'maven'
 //apply from: 'gradle/integration-tests.gradle'
 
@@ -97,22 +97,22 @@ publishPlugins {
     mustRunAfter build
 }
 
-gradleTest {
-    versions '4.0.2', '4.1', '4.2.1'
-    versions '4.3.1', '4.4.1', '4.5'
-    versions '4.6', '4.7'
-
-    inputs.files jar
-    inputs.dir file('gradleTest')
-
-    beforeTest {
-        println "  ${it.name}"
-    }
-
-    if(OS.windows) {
-        gradleArguments '-g', file("${buildDir}/gradleTest/userHome").absolutePath
-    }
-}
+//gradleTest {
+//    versions '4.0.2', '4.1', '4.2.1'
+//    versions '4.3.1', '4.4.1', '4.5'
+//    versions '4.6', '4.7'
+//
+//    inputs.files jar
+//    inputs.dir file('gradleTest')
+//
+//    beforeTest {
+//        println "  ${it.name}"
+//    }
+//
+//    if(OS.windows) {
+//        gradleArguments '-g', file("${buildDir}/gradleTest/userHome").absolutePath
+//    }
+//}
 
 task release {
     group 'release'
@@ -127,3 +127,5 @@ uploadArchives {
         }
     }
 }
+
+build.dependsOn publishToMavenLocal

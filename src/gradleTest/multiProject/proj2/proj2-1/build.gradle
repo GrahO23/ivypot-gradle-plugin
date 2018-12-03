@@ -1,5 +1,0 @@
-apply plugin : 'java'
-
-dependencies {
-  testCompile "net.sourceforge.nekohtml:nekohtml:1.9.22"
-}
